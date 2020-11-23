@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <p>
+        Hello {{ user.full_name }}
+    </p>
+
+    <ul>
+    {% for request in requests %}
+        <li>
+            {% include "request.html" %}
+        </li>
+    {% else %}
+    You have no pending requests.
+    {% endfor %}
+    </ul>
+    
+{% endblock %}

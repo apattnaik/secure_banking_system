@@ -1,0 +1,21 @@
+<!-- this is a template fragment that needs 'request' to be defined. It renders the request.-->
+
+{% if request.request_type == 'info_change_requests' %}
+{% elif request.request_type == 'new_account_requests' %}
+<div class="request new-account-request">
+    <span class="request-kind">New account request</span>
+    <span class="request-account-type">from: {{ request.requester.full_name }}</span>
+    <span class="request-account-name">name: {{ request.account_name }}</span>
+    <span class="request-account-type">type: {{ request.account_type.name }}</span>
+    <form action="{{ url_for('approve_request') }}" method="post" style="display: inline;">
+        {{ approve_request_form.request_id(value=request.id) }}
+        {{ approve_request_form.submit() }}
+        {{ approve_request_form.csrf_token }}
+    </form>
+    <form action="{{ url_for('deny_request') }}" method="post" style="display: inline;">
+        {{ deny_request_form.request_id(value=request.id) }}
+        {{ deny_request_form.submit() }}
+        {{ deny_request_form.csrf_token }}
+    </form>
+</div>
+{% endif %}

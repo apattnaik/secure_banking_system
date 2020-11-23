@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>INTERNAL TRANSFER</h1>
+
+<form action="/inttrans" method="post" novalidate>
+        <p>
+            {{ inttrans_form.account_from.label }}<br>
+            {{ inttrans_form.account_from() }}<br><!--this prob needs to be changed because we know the input for this field-->
+            {{ inttrans_form.account_to.label }}<br>
+            {{ inttrans_form.account_to() }}<br>
+            {{ inttrans_form.amount.label }}<br>
+            {{ inttrans_form.amount() }}<br>      
+        </p>
+        <p>{{ inttrans_form.submit2() }}</p>
+</form>
+
+<span style ="text-allign:center;">or</span>
+
+<h1>EXTERNAL TRANSFER</h1>
+
+<form action="/exttrans" method="post" novalidate>
+    <p>
+            {{ exttrans_form.account_to.label }}<br>
+            {{ exttrans_form.account_to() }}<br>
+    </p>
+    <p>
+            {{ exttrans_form.account_to_validate.label }}<br>
+            {{ exttrans_form.account_to_validate() }}<br>
+    </p>
+    <p>
+            {{ exttrans_form.amount.label }}<br>
+            {{ exttrans_form.amount() }}<br>      
+    </p>
+    <p>
+            {{ exttrans_form.account_type.label }}<br>
+            {{ exttrans_form.account_type() }}<br>      
+    </p>
+    <p>
+            {{ exttrans_form.amount.label }}<br>
+            {{ exttrans_form.amount() }}<br>      
+    </p>
+    <p>
+            {{ exttrans_form.name.label }}<br>
+            {{ exttrans_form.name() }}<br>      
+    </p>
+    
+    <p>
+        {{ exttrans_form.submit3() }}
+    </p>
+</form>
+
+<span style ="text-allign:center;">or</span>
+
+<h1>QUICKPAY</h1>
+<form action="(quicktrans" method="post" novalidate>
+    <p>
+            {{ quick_form.email.label }}<br>
+            {{ quicks_form.email() }}<br>
+    </p>
+    <p>
+            {{ quick_form.phone.label }}<br>
+            {{ quicks_form.phone() }}<br>
+    </p>
+    <p>
+            {{ quicks_form.submit4() }}<br>
+    </p>
+{% endblock %}

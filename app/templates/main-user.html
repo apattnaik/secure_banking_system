@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <p>
+        Hello {{ user.full_name }}
+    </p>
+
+    Your accounts:
+    <ul>
+        {% for account in accounts %}
+        <li style="background-color:lightblue">
+            <p>Name: {{ account.name }}</p>
+            <p>Balance: {{ '$%.2f' % account.balance }}</p>
+            <!-- TODO: statements, make transaction, and cashier cheque -->
+        </li>
+        {% else %}
+        You have no accounts open.
+        {% endfor %}
+    </ul>
+
+    <p><a href="{{ url_for('request_new_account') }}">Request a new account</a></p>
+    
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Request New Account</h1>
+
+<form action="{{ url_for('request_new_account') }}" method="post">
+    <p>
+        {{ new_account_form.account_type.label }}: {{ new_account_form.account_type() }}
+
+        {% for error in new_account_form.account_type.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ new_account_form.account_name.label }}: {{ new_account_form.account_name() }}
+
+        {% for error in new_account_form.account_name.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>{{ new_account_form.submit() }}</p>
+    {{ new_account_form.csrf_token }}
+</form>
+
+{% endblock %}
